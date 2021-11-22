@@ -44,7 +44,8 @@ end
 
 function testWrite(i)
     clearScreen()
-    CenterT("Testing: " .. i, 2, colors.black, colors.green, "right")
+    CenterT("", 2, colors.black, colors.green, "right")
+    CenterT("Testing: " .. i, 3, colors.black, colors.green, "right")
 end
 
 
