@@ -9,6 +9,15 @@ local rs = peripheral.wrap("back")
 local essences = {
     [1] = {"minecraft:slime_ball", "mysticalagriculture:slime_essence", 3, 8},
     [2] = {"minecraft:ender_pearl", "mysticalagriculture:enderman_essence", 8, 4},
+    [3] = {"minecraft:gold_ingot", "mysticalagriculture:gold_essence", 8, 4},
+    [4] = {"minecraft:diamond", "mysticalagriculture:diamond_essence", 9, 1},
+    [5] = {"minecraft:emerald", "mysticalagriculture:emerald_essence", 9, 1},
+    [6] = {"thermal:invar_ingot", "mysticalagriculture:invar_essence", 8, 4},
+    [7] = {"mekanism:ingot_osmium", "mysticalagriculture:osmium_essence", 8, 4},
+    [8] = {"thermal:electrum_ingot", "mysticalagriculture:electrum_essence", 8, 4},
+    [9] = {"mekanism:ingot_refined_obsidian", "mysticalagriculture:refined_obsidian_essence", 8, 2},
+    [10] = {"mekanism:ingot_uranium", "mysticalagriculture:uranium_essence", 8, 2},
+    [11] = {"refinedstorage:quartz_enriched_iron", "mysticalagriculture:quartz_enriched_iron_essence", 8, 8},
 }
 
 
