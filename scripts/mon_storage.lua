@@ -10,6 +10,7 @@ local rs = peripheral.wrap("back")
 
 local rs_items = {
     [1] = {"Iron Ingot", "minecraft:iron_ingot"},
+    [2] = {"Gold Ingot", "minecraft:gold_ingot"},
 }
 
 
@@ -55,14 +56,14 @@ function check_items()
     local current_line = 2
 
     for i,v in pairs(rs_items) do
-        -- Increment display line by 1
-        current_line = current_line + 1
-        
         -- Search for item in storage
         searched_item = rs.getItem({["name"] = v[2]})
         
         -- Print item
-        CenterT("I: " .. v[2] .. " - C: " .. searched_item["count"], current_line, colors.black, colors.green, "right")
+        CenterT("I: " .. v[1] .. " - C: " .. searched_item["count"], current_line, colors.black, colors.green, "left")
+
+        -- Increment display line by 1
+        current_line = current_line + 1
     end
 end
 
