@@ -14,7 +14,7 @@ local essences = {
 
 -- Functions
 local function round(num)
-    return num + (2^52 + 2^51) - (2^52 + 2^51)
+    return num + (2^52 + 2^51) - (2^52 + 2^51) - 1
 end
 
 -- Just a method to writes textes easier
