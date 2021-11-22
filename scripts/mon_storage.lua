@@ -5,7 +5,7 @@
 -- Variables
 local label = "Don Storage Monitor v1.0.69"
 
-local mon = peripheal.wrap("right")
+local mon = peripheral.wrap("right")
 local rs = peripheral.wrap("back")
 
 local rs_items = {
