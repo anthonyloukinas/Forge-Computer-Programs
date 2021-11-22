@@ -7,7 +7,7 @@ local mon = peripheral.wrap("right")
 local rs = peripheral.wrap("back")
 
 local essences = {
-    [1] = {"minecraft:slime_ball", "mysticalagriculture:slime_essence", 3},
+    [1] = {"minecraft:slime_ball", "mysticalagriculture:slime_essence", 3, 8},
 }
 
 
@@ -33,6 +33,7 @@ while true do
                 print("[log] Found enough raw essences to craft " .. v[2])
                 
                 max_amount = found_item["count"] / v[3]
+                max_amount = max_amount * v[4]
 
                 -- Craft final item
                 print("[log] Crafting " .. max_amount .. " " .. v[1])
