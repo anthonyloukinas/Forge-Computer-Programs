@@ -12,6 +12,7 @@ local rs_items = {
     [1] = {"Iron Ingot", "minecraft:iron_ingot"},
 }
 
+local current_line = 2
 
 -- Functions
 -- Just a method to writes textes easier
@@ -35,24 +36,36 @@ function CenterT(text, line, txtback , txtcolor, pos)
     end
   end
 
-function clearScreen()
+function clear_screen()
     mon.setBackgroundColor(colors.black)
     mon.clear()
     mon.setCursorPos(1,1)
     CenterT(label ,1, colors.black, colors.white,"head")
 end
 
-function testWrite(i)
-    clearScreen()
+function test_write(i)
+    clear_screen()
     CenterT("", 2, colors.black, colors.green, "right")
     CenterT("Testing: " .. i, 3, colors.black, colors.green, "right")
 end
 
+function check_items()
+    for i,v in pairs(rs_items) do
+        -- Increment display line by 1
+        current_line = current_line + 1
+        
+        -- Search for item in storage
+        searched_item = rs.getItem({["name"] = v[2]})
+        
+        -- Print item
+        CenterT("Item: " .. searched_item["name"] .. " - Amount: " .. searched_item["count"], current_line, colors.black, colors.green, "right")
+    end
+end
 
 -- Main Loop
 i = 0
 while true do
   i = i + 1
-  testWrite(i)
+  check_items()
   sleep(5)
 end
