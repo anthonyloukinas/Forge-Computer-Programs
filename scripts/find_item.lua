@@ -13,7 +13,10 @@ if #tArgs < 1 then
     return
 end
 
+local mon = peripheral.wrap("right")
 local rs = peripheral.wrap("back")
+
+term.redirect(mon)
 
 is_connected = rs.isConnected()
 if is_connected then
