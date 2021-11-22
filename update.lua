@@ -23,15 +23,16 @@ end
 
 
 -- Main
-print("Updating system.. please wait..")
+print("[updater] Performing system upgrade")
 
 -- Removing old init.lua
-print("Removing old init.lua...")
+print("[updater] Removing old init.lua")
 fs.delete("init.lua")
 
 -- Download latest init.lua
+print("[updater] Downloading latest init.lua")
 download(url, "init.lua")
 
+-- Execute init.lua
 shell.run("./init.lua")
-
-print("Successfully updated your system...")
+print("[updater] System upgrade complete")
