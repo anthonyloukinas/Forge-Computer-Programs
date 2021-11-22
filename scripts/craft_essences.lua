@@ -97,7 +97,7 @@ while true do
             end
             
             print("[log] Sleeping 1 seconds in between job schedules")
-            sleep(1)
+            sleep(10)
         else
             print("[log] " .. v[1] .. " does not have a crafting pattern.")
         end
