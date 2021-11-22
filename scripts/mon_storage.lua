@@ -53,14 +53,14 @@ function check_items()
     -- Clear screen
     clear_screen()
     
-    local current_line = 2
+    local current_line = 3
 
     for i,v in pairs(rs_items) do
         -- Search for item in storage
         searched_item = rs.getItem({["name"] = v[2]})
         
         -- Print item
-        CenterT("I: " .. v[1] .. " - C: " .. searched_item["count"], current_line, colors.black, colors.green, "left")
+        CenterT("Item: " .. v[1] .. " - Count: " .. searched_item["count"], current_line, colors.black, colors.green, "left")
 
         -- Increment display line by 1
         current_line = current_line + 1
