@@ -5,7 +5,7 @@
 
 
 -- Variables
-local url = "ps://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/init.lua"
+local url = "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/init.lua"
 
 
 -- Functions
