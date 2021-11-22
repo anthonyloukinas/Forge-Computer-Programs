@@ -76,30 +76,34 @@ while true do
                 ["name"] = v[2]
             })
 
-            if found_ess["count"] >= v[3] then
-                max_amount = found_ess["count"] / v[3]
-                max_amount = round(max_amount * v[4])
-
-                if max_amount - 5 <= 0 then
-                   print("[log] Waiting until there are more essences to craft")
-                else
-                    max_amount = max_amount - 5
-                    
-                    -- Craft final item
-                    print("[log] Crafting " .. max_amount .. " " .. v[1])
-                    task = rs.scheduleTask({
-                        ["name"] = v[1],
-                        ["count"] = max_amount
-                    })
-
-                    if task ~= nil then
-                        print("[log] Crafting task scheduled")
-                    else
-                        print("[log] Failed to schedule crafting task")
-                    end
-                end 
+            if found_ess == nil then
+                print("[log] Unable to find any " .. v[2] .. " essences")
             else
-                print("[log] Not enough raw essences to craft " .. v[1])
+                if found_ess["count"] >= v[3] then
+                    max_amount = found_ess["count"] / v[3]
+                    max_amount = round(max_amount * v[4])
+    
+                    if max_amount - 5 <= 0 then
+                       print("[log] Waiting until there are more essences to craft")
+                    else
+                        max_amount = max_amount - 5
+    
+                        -- Craft final item
+                        print("[log] Crafting " .. max_amount .. " " .. v[1])
+                        task = rs.scheduleTask({
+                            ["name"] = v[1],
+                            ["count"] = max_amount
+                        })
+    
+                        if task ~= nil then
+                            print("[log] Crafting task scheduled")
+                        else
+                            print("[log] Failed to schedule crafting task")
+                        end
+                    end 
+                else
+                    print("[log] Not enough raw essences to craft " .. v[1])
+                end
             end
             
             print("[log] Sleeping 1 seconds in between job schedules")
