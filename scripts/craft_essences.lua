@@ -3,7 +3,7 @@
 
 
 -- Variables
-local mon = peripheral.wrap("right")
+local mon = {}
 local rs = peripheral.wrap("back")
 
 local essences = {
@@ -29,6 +29,16 @@ local essences = {
 
 
 -- Functions
+function init()
+    monitors = { peripheral.find("monitor") }
+
+    if monitors[1] == nil then
+        error("Monitor is not detected")
+    end
+
+    mon = monitors[1]
+end
+
 local function round(num)
     return num + (2^52 + 2^51) - (2^52 + 2^51)
 end
@@ -64,6 +74,8 @@ end
 
 -- Main Loop
 -- Redirect output to monitor
+init()
+
 term.redirect(mon)
 
 i = 0
