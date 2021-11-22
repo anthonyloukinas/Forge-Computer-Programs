@@ -23,6 +23,7 @@ local essences = {
     [13] = {"minecraft:blaze_rod", "mysticalagriculture:blaze_essence", 8, 6},
     [14] = {"bigreactors:cyanite_ingot", "mysticalagriculture:cyanite_essence", 8, 3},
     [15] = {"minecraft:quartz", "mysticalagriculture:nether_quartz_essence", 8, 12},
+    [16] = {"minecraft:netherite_ingot", "mysticalagriculture:netherite_essence", 8, 1},
 }
 
 
