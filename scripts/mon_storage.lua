@@ -12,7 +12,6 @@ local rs_items = {
     [1] = {"Iron Ingot", "minecraft:iron_ingot"},
 }
 
-local current_line = 2
 
 -- Functions
 -- Just a method to writes textes easier
@@ -50,6 +49,8 @@ function test_write(i)
 end
 
 function check_items()
+    local current_line = 2
+
     for i,v in pairs(rs_items) do
         -- Increment display line by 1
         current_line = current_line + 1
@@ -58,9 +59,10 @@ function check_items()
         searched_item = rs.getItem({["name"] = v[2]})
         
         -- Print item
-        CenterT("Item: " .. searched_item["name"] .. " - Amount: " .. searched_item["count"], current_line, colors.black, colors.green, "right")
+        CenterT("I: " .. v[2] .. " - C: " .. searched_item["count"], current_line, colors.black, colors.green, "right")
     end
 end
+
 
 -- Main Loop
 i = 0
