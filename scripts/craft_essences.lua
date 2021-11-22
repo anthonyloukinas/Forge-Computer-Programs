@@ -23,7 +23,7 @@ local essences = {
 
 -- Functions
 local function round(num)
-    return num + (2^52 + 2^51) - (2^52 + 2^51) - 1 -- We are minusing 1, because we dont need to be accurate
+    return num + (2^52 + 2^51) - (2^52 + 2^51) - 5 -- We are minusing 5, because we dont need to be accurate
 end
 
 -- Just a method to writes textes easier
@@ -95,7 +95,9 @@ while true do
             else
                 print("[log] Not enough raw essences to craft " .. v[1])
             end
-                    
+            
+            print("[log] Sleeping 1 seconds in between job schedules")
+            sleep(1)
         else
             print("[log] " .. v[1] .. " does not have a crafting pattern.")
         end
