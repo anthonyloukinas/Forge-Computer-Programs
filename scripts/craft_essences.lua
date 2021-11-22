@@ -18,6 +18,11 @@ local essences = {
     [8] = {"mekanism:ingot_refined_obsidian", "mysticalagriculture:refined_obsidian_essence", 8, 2},
     [9] = {"mekanism:ingot_uranium", "mysticalagriculture:uranium_essence", 8, 2},
     [10] = {"refinedstorage:quartz_enriched_iron", "mysticalagriculture:quartz_enriched_iron_essence", 8, 8},
+    [11] = {"refinedstorage:silicon", "mysticalagriculture:silicon_essence", 3, 8},
+    [12] = {"pneumaticcraft:ingot_iron_compressed", "mysticalagriculture:compressed_iron_essence", 8, 6},
+    [13] = {"minecraft:blaze_rod", "mysticalagriculture:blaze_essence", 8, 6},
+    [14] = {"bigreactors:cyanite_ingot", "mysticalagriculture:cyanite_essence", 8, 3},
+    [15] = {"minecraft:nether_quartz", "mysticalagriculture:nether_quartz_essence", 8, 12},
 }
 
 
