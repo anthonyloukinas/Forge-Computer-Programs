@@ -11,7 +11,7 @@ local url = "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Pr
 -- Functions
 function download(url, file)
     local content = http.get(url).readAll()
-    
+
     if not content then
         error("Could not connect to website")
     end
@@ -31,4 +31,7 @@ fs.delete("init.lua")
 
 -- Download latest init.lua
 download(url, "init.lua")
+
+shell.run("./init.lua")
+
 print("Successfully updated your system...")
