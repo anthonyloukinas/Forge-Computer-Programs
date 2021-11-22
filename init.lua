@@ -27,7 +27,7 @@ end
 
 
 -- Main
-print("[system] Initializing the system")
+print("[system] Initializing system")
 
 for i = 1, #files do
     local file_found = fs.exists(files[i])
@@ -41,4 +41,4 @@ for i = 1, #files do
     download(base_github_url .. files[i], files[i])
 end
 
-print("[system] Finished initializing the system")
+print("[system] System initialized")
