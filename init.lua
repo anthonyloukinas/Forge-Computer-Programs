@@ -30,8 +30,12 @@ end
 print("Initalizing...")
 
 for i = 1, #files do
-    print("Deleting " .. files[i])
-    fs.delete(files[i])
+    local file_found = fs.exists(files[i])
+
+    if file_found then
+        print("Deleting " .. files[i])
+        fs.delete(files[i])
+    end
 
     print("Downloading " .. files[i])
     download(base_github_url .. files[i], files[i])
