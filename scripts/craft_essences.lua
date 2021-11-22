@@ -3,8 +3,11 @@
 
 
 -- Variables
+local monitors = {}
+local storages = {}
+
 local mon = {}
-local rs = peripheral.wrap("back")
+local rs = {}
 
 local essences = {
     [1] = {"minecraft:slime_ball", "mysticalagriculture:slime_essence", 3, 8},
@@ -32,13 +35,31 @@ local essences = {
 function init()
     monitors = { peripheral.find("monitor") }
 
+    -- Allow 5 attempts at discovering the RefinedStorage network
+    local loopI = 0
+    while loopI ~= 5 do
+
+        if peripheral.find("refinedstorage") ~= nil then
+            storages = { peripheral.find("refinedstorage") }
+            break
+        end
+
+        sleep(1)
+        loopI = loopI + 1
+    end
+
     if monitors[1] == nil then
-        error("Monitor is not detected")
+        error("[error] Monitor is not detected")
+    end
+
+    if storages[1] == nil then
+        error("[error] RefinedStorage is not detected")
     end
 
     mon = monitors[1]
+    rs = storages[1]
 
-    print("[craft_essences] Script initialized")
+    print("[log] craft_essences.lua script initialized")
 end
 
 local function round(num)
