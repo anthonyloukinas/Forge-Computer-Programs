@@ -23,7 +23,7 @@ local essences = {
 
 -- Functions
 local function round(num)
-    return num + (2^52 + 2^51) - (2^52 + 2^51) - 5 -- We are minusing 5, because we dont need to be accurate
+    return num + (2^52 + 2^51) - (2^52 + 2^51)
 end
 
 -- Just a method to writes textes easier
@@ -72,32 +72,36 @@ while true do
         if has_pattern then
             
             -- Figure out how many raw essences we have
-            found_item = rs.getItem({
+            found_ess = rs.getItem({
                 ["name"] = v[2]
             })
 
-            if found_item["count"] >= v[3] then
-                max_amount = found_item["count"] / v[3]
+            if found_ess["count"] >= v[3] then
+                max_amount = found_ess["count"] / v[3]
                 max_amount = round(max_amount * v[4])
 
-                -- Craft final item
-                print("[log] Crafting " .. max_amount .. " " .. v[1])
-                task = rs.scheduleTask({
-                    ["name"] = v[1],
-                    ["count"] = max_amount
-                })
-
-                if task ~= nil then
-                    print("[log] Crafting task scheduled")
+                if max_amount - 5 <= 0 then
+                   print("[log] Waiting until there are more essences to craft")
                 else
-                    print("[log] Failed to schedule crafting task")
-                end
+                    -- Craft final item
+                    print("[log] Crafting " .. max_amount .. " " .. v[1])
+                    task = rs.scheduleTask({
+                        ["name"] = v[1],
+                        ["count"] = max_amount
+                    })
+
+                    if task ~= nil then
+                        print("[log] Crafting task scheduled")
+                    else
+                        print("[log] Failed to schedule crafting task")
+                    end
+                end 
             else
                 print("[log] Not enough raw essences to craft " .. v[1])
             end
             
             print("[log] Sleeping 1 seconds in between job schedules")
-            sleep(10)
+            sleep(1)
         else
             print("[log] " .. v[1] .. " does not have a crafting pattern.")
         end
