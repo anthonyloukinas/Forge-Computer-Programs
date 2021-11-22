@@ -11,6 +11,7 @@ local rs = peripheral.wrap("back")
 local rs_items = {
     [1] = {"Iron Ingot", "minecraft:iron_ingot"},
     [2] = {"Gold Ingot", "minecraft:gold_ingot"},
+    [3] = {"Iron Essence", "mysticalagriculture:iron_essence"},
 }
 
 
@@ -71,7 +72,7 @@ end
 -- Main Loop
 i = 0
 while true do
-  i = i + 1
-  check_items()
-  sleep(5)
+    i = i + 1
+    check_items()
+    sleep(5)
 end
