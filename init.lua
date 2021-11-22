@@ -8,7 +8,7 @@
 local base_github_url = "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/"
 
 files = {
-    [1] = "monitor_storage.lua",
+    [1] = "scripts/mon_storage.lua",
 }
 
 
@@ -28,6 +28,9 @@ end
 print("Initalizing...")
 
 for i = 1, #files do
+    print("Deleting " .. files[i])
+    fs.delete(files[i])
+
     print("Downloading " .. files[i])
     download(base_github_url .. files[i], files[i])
 end

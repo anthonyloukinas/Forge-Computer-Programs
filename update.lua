@@ -3,8 +3,10 @@
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
 -- @purpose: Updates the init.lua file with the latest changes.
 
+
 -- Variables
 local url = "ps://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/init.lua"
+
 
 -- Functions
 function download(url, file)
@@ -21,6 +23,10 @@ end
 -- Main
 print("Updating system.. please wait..")
 
-download(url, "init.lua")
+-- Removing old init.lua
+print("Removing old init.lua...")
+fs.delete("init.lua")
 
+-- Download latest init.lua
+download(url, "init.lua")
 print("Successfully updated your system...")
