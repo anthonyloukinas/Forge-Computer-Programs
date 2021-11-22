@@ -18,7 +18,7 @@ files = {
 function download(url, file)
     local content = http.get(url).readAll()
     if not content then
-      error("Could not connect to website")
+      error("[system] Could not connect to GitHub")
     end
     f = fs.open(file, "w")
     f.write(content)
@@ -27,18 +27,18 @@ end
 
 
 -- Main
-print("Initalizing...")
+print("[system] Initializing the system")
 
 for i = 1, #files do
     local file_found = fs.exists(files[i])
 
     if file_found then
-        print("Deleting " .. files[i])
+        print("[system] Deleting old script " .. files[i])
         fs.delete(files[i])
     end
 
-    print("Downloading " .. files[i])
+    print("[system] Installing new script " .. files[i])
     download(base_github_url .. files[i], files[i])
 end
 
-print("Finished initializing...")
+print("[system] Finished initializing the system")
