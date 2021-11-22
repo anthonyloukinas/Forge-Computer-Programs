@@ -83,6 +83,8 @@ while true do
                 if max_amount - 5 <= 0 then
                    print("[log] Waiting until there are more essences to craft")
                 else
+                    max_amount = max_amount - 5
+                    
                     -- Craft final item
                     print("[log] Crafting " .. max_amount .. " " .. v[1])
                     task = rs.scheduleTask({
