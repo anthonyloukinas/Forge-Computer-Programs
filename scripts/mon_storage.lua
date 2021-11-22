@@ -49,6 +49,9 @@ function test_write(i)
 end
 
 function check_items()
+    -- Clear screen
+    clear_screen()
+    
     local current_line = 2
 
     for i,v in pairs(rs_items) do
