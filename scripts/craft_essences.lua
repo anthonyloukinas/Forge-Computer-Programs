@@ -37,6 +37,8 @@ function init()
     end
 
     mon = monitors[1]
+
+    print("[craft_essences] Script initialized")
 end
 
 local function round(num)
