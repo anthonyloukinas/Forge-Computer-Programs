@@ -8,6 +8,7 @@ local rs = peripheral.wrap("back")
 
 local essences = {
     [1] = {"minecraft:slime_ball", "mysticalagriculture:slime_essence", 3, 8},
+    [2] = {"minecraft:ender_pearl", "mysticalagriculture:enderman_essence", 8, 4},
 }
 
 
@@ -15,9 +16,40 @@ local essences = {
 local function round(num)
     return num + (2^52 + 2^51) - (2^52 + 2^51)
 end
-  
+
+-- Just a method to writes textes easier
+function CenterT(text, line, txtback , txtcolor, pos)
+    monX,monY = mon.getSize()
+    mon.setBackgroundColor(txtback)
+    mon.setTextColor(txtcolor)
+    length = string.len(text)
+    dif = math.floor(monX-length)
+    x = math.floor(dif/2)
+   
+    if pos == "head" then
+      mon.setCursorPos(x+1, line)
+      mon.write(text)
+    elseif pos == "left" then
+      mon.setCursorPos(2,line)
+      mon.write(text)
+    elseif pos == "right" then
+      mon.setCursorPos(monX-length, line)
+      mon.write(text)
+    end
+end
+
+function clear_screen()
+    mon.setBackgroundColor(colors.black)
+    mon.clear()
+    mon.setCursorPos(1,1)
+    CenterT(label ,1, colors.black, colors.white,"head")
+end
+
 
 -- Main Loop
+-- Redirect output to monitor
+term.redirect(mon)
+
 i = 0
 while true do
     i = i + 1
@@ -36,25 +68,30 @@ while true do
             })
 
             if found_item["count"] >= v[3] then
-                print("[log] Found enough raw essences to craft " .. v[2])
-                
                 max_amount = found_item["count"] / v[3]
                 max_amount = round(max_amount * v[4])
 
                 -- Craft final item
                 print("[log] Crafting " .. max_amount .. " " .. v[1])
-                rs.scheduleTask({
+                task = rs.scheduleTask({
                     ["name"] = v[1],
                     ["count"] = max_amount
-                })    
+                })
+
+                if task ~= nil then
+                    print("[log] Crafting task scheduled")
+                else
+                    print("[log] Failed to schedule crafting task")
+                end
             else
-                print("[log] Not enough raw essences to craft " .. v[2])
+                print("[log] Not enough raw essences to craft " .. v[1])
             end
                     
         else
-            print("[log] " .. ess .. " does not have a crafting pattern.")
+            print("[log] " .. v[1] .. " does not have a crafting pattern.")
         end
     end
 
+    print("[log] Sleeping 60 seconds...")
     sleep(60)
 end

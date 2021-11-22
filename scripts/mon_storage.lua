@@ -35,7 +35,7 @@ function CenterT(text, line, txtback , txtcolor, pos)
       mon.setCursorPos(monX-length, line)
       mon.write(text)
     end
-  end
+end
 
 function clear_screen()
     mon.setBackgroundColor(colors.black)
