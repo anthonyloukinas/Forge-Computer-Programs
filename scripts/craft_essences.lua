@@ -11,6 +11,12 @@ local essences = {
 }
 
 
+-- Functions
+local function round(num)
+    return num + (2^52 + 2^51) - (2^52 + 2^51)
+end
+  
+
 -- Main Loop
 i = 0
 while true do
@@ -33,7 +39,7 @@ while true do
                 print("[log] Found enough raw essences to craft " .. v[2])
                 
                 max_amount = found_item["count"] / v[3]
-                max_amount = max_amount * v[4]
+                max_amount = round(max_amount * v[4])
 
                 -- Craft final item
                 print("[log] Crafting " .. max_amount .. " " .. v[1])
