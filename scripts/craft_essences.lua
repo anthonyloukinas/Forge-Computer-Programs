@@ -35,8 +35,8 @@ while true do
                 max_amount = found_item["count"] / v[3]
 
                 -- Craft final item
-                print("[log] Crafting " .. v[1])
-                rs.schedulePattern({
+                print("[log] Crafting " .. max_amount .. " " .. v[1])
+                rs.scheduleTask({
                     ["name"] = v[1],
                     ["count"] = max_amount
                 })    
