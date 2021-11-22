@@ -9,6 +9,7 @@ local base_github_url = "https://raw.githubusercontent.com/anthonyloukinas/Forge
 
 files = {
     [1] = "scripts/mon_storage.lua",
+    [2] = "scripts/find_item.lua"
 }
 
 
