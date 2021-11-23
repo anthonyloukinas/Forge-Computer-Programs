@@ -25,9 +25,17 @@ end
 
 function main()
 
-    for i = 0, 10 do
+    while true do
         -- First Row
         turtle.forward()
+
+        -- Check to make sure we arent mining bedrock
+        exists, info = turtle.inspectDown()
+        if info.name == "minecraft:bedrock" then
+            print("[log] bedrock found, stopping")
+            break
+        end
+
         turtle.digDown()
         turtle.down()
         turtle.turnRight()
