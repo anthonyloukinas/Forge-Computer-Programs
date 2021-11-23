@@ -1,9 +1,11 @@
 -- mon_storage.lua
+--
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
 
 
 -- Variables
-local label = "Don Storage Monitor v1.0.69"
+local version = "1.0.69"
+local label = "Don Storage Monitor v" .. version
 
 local mon = peripheral.wrap("right")
 local rs = peripheral.wrap("back")

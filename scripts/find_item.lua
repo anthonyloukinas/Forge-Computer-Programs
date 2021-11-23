@@ -1,11 +1,15 @@
 -- find_item.lua
+--
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
 -- @purpose: Searches RefinedStorage for an Item matching user's input.
 
+
+-- Variables
 local function printUsage()
-    print("You are using this wrong!")
+    print("Usage: find_item QUERY_HERE\nExample: find_item compressed_iron")
 end
 
+-- Argument handling
 local tArgs = {...}
 
 if #tArgs < 1 then
@@ -13,11 +17,10 @@ if #tArgs < 1 then
     return
 end
 
-local mon = peripheral.wrap("right")
-local rs = peripheral.wrap("back")
+-- Find RefinedStorage interface
+local rs = peripheral.find("refinedstorage")
 
-term.redirect(mon)
-
+-- Check to ensure RefinedStorage is connected to CC
 is_connected = rs.isConnected()
 if is_connected then
     print("Connected to Refined Storage!")

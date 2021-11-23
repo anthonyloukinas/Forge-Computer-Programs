@@ -1,8 +1,12 @@
 -- craft_essences.lua
+--
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
+-- @purpose: Turn MysticalAgriculture essences to end products
 
 
 -- Variables
+local version = "1.0.0"
+
 local monitors = {}
 local storages = {}
 
@@ -59,7 +63,7 @@ function init()
     mon = monitors[1]
     rs = storages[1]
 
-    print("[log] craft_essences.lua script initialized")
+    print("[log] craft_essences.lua " .. version .. " script initialized")
 end
 
 local function round(num)
@@ -99,7 +103,7 @@ end
 -- Redirect output to monitor
 init()
 
-term.redirect(mon)
+-- term.redirect(mon)
 
 i = 0
 while true do
