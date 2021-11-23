@@ -24,14 +24,11 @@ function init()
 end
 
 function main()
+    -- First Row
     turtle.forward()
-
     turtle.digDown()
-
     turtle.down()
-
     turtle.turnRight()
-
     turtle.dig()
     turtle.forward()
     turtle.dig()
@@ -39,58 +36,41 @@ function main()
     turtle.dig()
     turtle.forward()
 
+    -- Second Row
     turtle.turnLeft()
     turtle.dig()
     turtle.forward()
-
     turtle.turnLeft()
     turtle.dig()
     turtle.forward()
-
+    turtle.dig()
+    turtle.forward()
     turtle.dig()
     turtle.forward()
 
-    turtle.dig()
-    turtle.forward()
-
+    -- Third Row
     turtle.turnRight()
     turtle.dig()
     turtle.forward()
-
     turtle.turnRight()
     turtle.dig()
     turtle.forward()
-
     turtle.dig()
     turtle.forward()
-    
     turtle.dig()
     turtle.forward()
 
+    -- Fourth Row
     turtle.turnLeft()
     turtle.dig()
     turtle.forward()
-
+    turtle.turnLeft()
     turtle.dig()
     turtle.forward()
-
     turtle.dig()
     turtle.forward()
-
-    turtle.turnRight()
     turtle.dig()
     turtle.forward()
-
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-
-    turtle.dig()
-    turtle.forward()
-    
-    turtle.dig()
-    turtle.forward()
-
 end
 
 -- Main
