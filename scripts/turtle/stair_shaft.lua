@@ -28,15 +28,29 @@ function main()
 
     turtle.digDown()
 
+    turtle.down()
+
     turtle.turnRight()
 
+    turtle.dig()
+    turtle.forward()
+    turtle.dig()
+    turtle.forward()
+    turtle.dig()
+
+    turtle.turnLeft()
+    turtle.dig()
     turtle.forward()
 
-    turtle.digDown()
-
+    turtle.turnLeft()
+    turtle.dig()
     turtle.forward()
 
-    turtle.digDown()
+    turtle.dig()
+    turtle.forward()
+
+    turtle.dig()
+    turtle.forward()
 end
 
 -- Main
