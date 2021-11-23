@@ -37,6 +37,7 @@ function main()
     turtle.dig()
     turtle.forward()
     turtle.dig()
+    turtle.forward()
 
     turtle.turnLeft()
     turtle.dig()
