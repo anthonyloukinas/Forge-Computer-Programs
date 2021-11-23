@@ -9,6 +9,7 @@ local version = "1.0.0"
 local author = "Anthony Loukinas"
 local description = "Mines a shaft down to bedrock, and places torches"
 
+local collected = {}
 
 -- Functions
 function init()
@@ -22,6 +23,22 @@ function init()
     print("[log] stair_shaft.lua " .. version .. " script initialized")
 end
 
+function main()
+    turtle.forward()
+
+    turtle.digDown()
+
+    turtle.turnRight()
+
+    turtle.forward()
+
+    turtle.digDown()
+
+    turtle.forward()
+
+    turtle.digDown()
+end
 
 -- Main
 init()
+main()
