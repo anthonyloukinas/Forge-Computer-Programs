@@ -24,53 +24,64 @@ function init()
 end
 
 function main()
-    -- First Row
-    turtle.forward()
-    turtle.digDown()
-    turtle.down()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
 
-    -- Second Row
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
+    for i = 0, 10 do
+        -- First Row
+        turtle.forward()
+        turtle.digDown()
+        turtle.down()
+        turtle.turnRight()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
 
-    -- Third Row
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
+        -- Second Row
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.forward()
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
 
-    -- Fourth Row
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
+        -- Third Row
+        turtle.turnRight()
+        turtle.dig()
+        turtle.forward()
+        turtle.turnRight()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
+
+        -- Fourth Row
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.forward()
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
+        turtle.dig()
+        turtle.forward()
+
+        -- Return to start
+        turtle.turnLeft()
+        turtle.forward()
+        turtle.forward()
+        turtle.forward()
+        turtle.turnLeft()
+        turtle.turnLeft()
+    end
 end
 
 -- Main
