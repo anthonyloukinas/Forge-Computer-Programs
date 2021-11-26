@@ -4,7 +4,11 @@
 -- @purpose: Mines a shaft down to bedrock, and places torches
 
 
+-- Imports
+local utils = require("../../lib/utils")
+
 -- Variables
+local script_name = "stair_shaft"
 local version = "1.0.0"
 local author = "Anthony Loukinas"
 local description = "Mines a shaft down to bedrock, and places torches"
