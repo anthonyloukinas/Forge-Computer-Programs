@@ -5,16 +5,22 @@
 
 function log(message, level, script)
     if level == nil then
-        level = "INFO"
-        print("[" .. script .. "] [INFO] " .. message)
-    elseif level == "INFO" then
-        print("[" .. script .. "] [INFO] " .. message)
-    elseif level == "WARN" then
-        print("[" .. script .. "] [WARN] " .. message)
-    elseif level == "ERROR" then
-        print("[" .. script .. "] [ERROR] " .. message)
-    elseif level == "FATAL" then
-        print("[" .. script .. "] [FATAL] " .. message)
+        level = "info"
+        print("[" .. script .. "] [info] " .. message)
+    elseif level == "info" then
+        print("[" .. script .. "] [info] " .. message)
+    elseif level == "warn" then
+        print("[" .. script .. "] [warn] " .. message)
+    elseif level == "error" then
+        print("[" .. script .. "] [error] " .. message)
+    elseif level == "fatal" then
+        print("[" .. script .. "] [fatal] " .. message)
+    elseif debug == "debug" then
+        if debugging ~= nil then
+            if debugging then
+                print("[" .. script .. "] [debug] " .. message)
+            end
+        end
     end
 end
 

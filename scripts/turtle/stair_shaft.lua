@@ -3,6 +3,7 @@
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
 -- @purpose: Mines a shaft down to bedrock, and places torches
 
+debugging = false
 
 -- Imports
 local utils = require("../../lib/utils")
@@ -24,19 +25,21 @@ function init()
         return
     end
 
-    print("[log] stair_shaft.lua " .. version .. " script initialized")
+    log(script_name .. " " .. version .. " script initialized", "info", script_name)
 end
 
 function main()
 
+    log("Starting main mining loop", "debug", script_name)
     while true do
+
         -- First Row
         turtle.forward()
 
         -- Check to make sure we arent mining bedrock
         exists, info = turtle.inspectDown()
         if info.name == "minecraft:bedrock" then
-            print("[log] bedrock found, stopping")
+            log(script_name .. " " .. version .. " Bedrock detected. Stopping script", "info", script_name)
             break
         end
 
