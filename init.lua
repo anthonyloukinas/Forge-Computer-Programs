@@ -11,7 +11,8 @@ files = {
     [1] = "scripts/mon_storage.lua",
     [2] = "scripts/find_item.lua",
     [3] = "scripts/craft_essences.lua",
-    [4] = "scripts/turtle/stair_shaft.lua"
+    [4] = "scripts/turtle/stair_shaft.lua",
+    [5] = "lib/utils.lua",
 }
 
 
