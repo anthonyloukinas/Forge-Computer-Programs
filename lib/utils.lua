@@ -16,3 +16,5 @@ function log(message, level, script)
         print("[" .. script .. "] [FATAL] " .. message)
     end
 end
+
+return { log = log }
