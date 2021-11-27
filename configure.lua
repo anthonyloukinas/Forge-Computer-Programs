@@ -28,8 +28,13 @@ function init()
 end
 
 function main()
-    local input = read()
-    print("You entered " .. input)
+    write("Server Address: ")
+    local server_address = read()
+
+    write("Hostname: ")
+    local hostname = read()
+
+    http.post("http://" .. server_address .. "/api/v1/configure", "hostname="..hostname)
 end
 
 

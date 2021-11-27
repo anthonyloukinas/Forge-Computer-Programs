@@ -17,6 +17,12 @@ update
 
 If you ever want to update to the latest copy of this repository, just run the update.lua again.
 
+## Deploying Server
+TODO
+
+### Configuring client PCs to server
+TODO
+
 # Authors
 
 - Anthony Loukinas <<anthony.loukinas@gmail.com>>
