@@ -70,6 +70,8 @@ function main()
         -- monitor_text = monitor_text .. "Energy Percentage: " .. energy_percentage .. "%\n"
 
         -- TODO Check fuel
+        print(energy_percentage)
+        print(config.energy_toggle_percent)
 
         -- If energy percentage is below the config value, activate the reactor
         if energy_percentage < config.energy_toggle_percent then
