@@ -34,7 +34,12 @@ function main()
     write("Hostname: ")
     local hostname = read()
 
-    http.post("http://" .. server_address .. "/api/v1/configure", "hostname="..hostname)
+    request = http.post("http://" .. server_address .. "/api/v1/configure", "hostname="..hostname)
+    if request.status == 200 then
+        log("Successfully configured client.", "info", script_name)
+    else
+        log("Failed to configure client.", "error", script_name)
+    end
 end
 
 
