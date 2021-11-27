@@ -3,6 +3,12 @@
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
 -- @purpose: A collection of utility functions.
 
+local debugging = false
+
+function set_debugging(debug)
+    debugging = debug
+end
+
 function log(message, level, script)
     if level == nil then
         level = "info"

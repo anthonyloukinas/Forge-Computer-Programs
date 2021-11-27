@@ -19,6 +19,8 @@ local description = "Manages BiggerReactor/ExtremeReactor's energy efficiency."
 local config = {}
 config.energy_toggle_percent = 80
 
+utils.set_debugging(debugging) -- Sets debugging to true/false for logging
+
 -- Script Variables
 local reactor = {}
 
@@ -42,11 +44,11 @@ function init()
     end
 
     if monitors[1] == nil then
-        log("No monitors detected.", "error", script_name)
+        log("No monitors detected. Disabling Feature.", "error", script_name)
     end
 
     if reactors[1] == nil then
-        log("No reactors detected.", "error", script_name)
+        log("No reactors detected. Disabling Script.", "error", script_name)
         error("No reactors detected, exiting script")
     end
 
