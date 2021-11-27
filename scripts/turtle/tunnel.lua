@@ -1,7 +1,10 @@
+-- tunnel.lua
+--
 -- Sourced from GitHub
--- https://github.com/cc-tweaked/CC-Tweaked/blob/mc-1.16.x/src/main/resources/data/computercraft/lua/rom/programs/turtle/tunnel.lua
--- 
--- Just using this as a reference
+--
+-- @source: https://github.com/cc-tweaked/CC-Tweaked/blob/mc-1.16.x/src/main/resources/data/computercraft/lua/rom/programs/turtle/tunnel.lua
+-- @purpose: Just using this as a reference
+
 
 if not turtle then
   printError("Requires a Turtle")
