@@ -63,32 +63,37 @@ function main()
         local energy_capacity = reactor.battery().capacity()
         local energy_percentage = math.floor((energy_stored / energy_capacity) * 100)
 
+        local fuel_stored = reactor.fuelTank().fuel()
+        local fuel_capacity = reactor.fuelTank().capacity()
+        local fuel_percentage = math.floor((fuel_stored / fuel_capacity) * 100)
+
         -- Reactor Monitor
         -- local monitor_text = "Reactor: " .. (is_active and "Active" or "Inactive") .. "\n"
         -- monitor_text = monitor_text .. "Energy Stored: " .. energy_stored .. " RF\n"
         -- monitor_text = monitor_text .. "Energy Capacity: " .. energy_capacity .. " RF\n"
         -- monitor_text = monitor_text .. "Energy Percentage: " .. energy_percentage .. "%\n"
 
-        -- TODO Check fuel
-        print(energy_percentage)
-        print(config.energy_toggle_percent)
-
-        -- If energy percentage is below the config value, activate the reactor
-        if energy_percentage < config.energy_toggle_percent then
-            if not is_active then
-                log("Reactor is inactive, activating.", "info", script_name)
-                reactor.setActive(true)
-            end
-        -- Else if energy percentage is above the config value, deactivate the reactor
+        if fuel_stored == 0 then
+            log("No fuel detected. Waiting 60s for fuel", "warning", script_name)
+            sleep(60)
         else
-            if is_active then
-                log("Reactor is active, deactivating.", "info", script_name)
-                reactor.setActive(false)
+            -- If energy percentage is below the config value, activate the reactor
+            if energy_percentage < config.energy_toggle_percent then
+                if not is_active then
+                    log("Reactor is inactive, activating.", "info", script_name)
+                    reactor.setActive(true)
+                end
+            -- Else if energy percentage is above the config value, deactivate the reactor
+            else
+                if is_active then
+                    log("Reactor is active, deactivating.", "info", script_name)
+                    reactor.setActive(false)
+                end
             end
-        end
 
-        log("Sleeping 5 seconds", "debug", script_name)
-        sleep(5)
+            log("Sleeping for 5s", "debug", script_name)
+            sleep(5)
+        end
     end
 end
 
