@@ -75,12 +75,6 @@ function main()
         reactor.fuel_capacity = reactor.fuelTank().capacity()
         reactor.fuel_percentage = math.floor((reactor.fuel_stored / reactor.fuel_capacity) * 100)
 
-        -- Reactor Monitor
-        -- local monitor_text = "Reactor: " .. (is_active and "Active" or "Inactive") .. "\n"
-        -- monitor_text = monitor_text .. "Energy Stored: " .. energy_stored .. " RF\n"
-        -- monitor_text = monitor_text .. "Energy Capacity: " .. energy_capacity .. " RF\n"
-        -- monitor_text = monitor_text .. "Energy Percentage: " .. energy_percentage .. "%\n"
-
         if reactor.fuel_stored == 0 then
             log("No fuel detected. Waiting 60s for fuel", "warning", script_name)
             sleep(60)
