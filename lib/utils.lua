@@ -30,4 +30,4 @@ function log(message, level, script)
     end
 end
 
-return { log = log }
+return { log = log, set_debugging = set_debugging }
