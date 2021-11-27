@@ -21,7 +21,7 @@ function log(message, level, script)
         print("[" .. script .. "] [error] " .. message)
     elseif level == "fatal" then
         print("[" .. script .. "] [fatal] " .. message)
-    elseif debug == "debug" then
+    elseif level == "debug" then
         if debugging ~= nil then
             if debugging then
                 print("[" .. script .. "] [debug] " .. message)
