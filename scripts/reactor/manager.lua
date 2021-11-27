@@ -21,7 +21,7 @@ config.energy_toggle_percent = 80
 
 -- Script Variables
 local reactor = {}
-
+local monitor = {}
 
 -- Functions
 function init()
@@ -47,7 +47,10 @@ function init()
     end
 
     if monitors[1] == nil then
-        log("No monitors detected. Disabling Feature.", "error", script_name)
+        log("No monitors detected. Disabling feature.", "warn", script_name)
+    else
+        monitor = monitors[1]
+        log("Monitor detected. Enabling feature.", "info", script_name)
     end
 
     if reactors[1] == nil then
@@ -84,17 +87,18 @@ function main()
         else
             -- If energy percentage is below the config value, activate the reactor
             if energy_percentage < config.energy_toggle_percent then
+                log("Reactor battery below threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
                 if not is_active then
                     log("Reactor is inactive, activating.", "info", script_name)
                     reactor.setActive(true)
                 end
             -- Else if energy percentage is above the config value, deactivate the reactor
             else
+                log("Reactor battery above threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
                 if is_active then
                     log("Reactor is active, deactivating.", "info", script_name)
                     reactor.setActive(false)
                 end
-                log("Reactor battery above threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
             end
 
             log("Sleeping for 5s", "debug", script_name)
