@@ -81,7 +81,7 @@ function main()
             end
         -- Else if energy percentage is above the config value, deactivate the reactor
         else
-            if not is_active then
+            if is_active then
                 log("Reactor is active, deactivating.", "info", script_name)
                 reactor.setActive(false)
             end
