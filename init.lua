@@ -13,6 +13,7 @@ files = {
     [3] = "scripts/craft_essences.lua",
     [4] = "scripts/turtle/stair_shaft.lua",
     [5] = "lib/utils.lua",
+    [6] = "scripts/reactor/manager.lua",
 }
 
 
