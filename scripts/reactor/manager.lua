@@ -32,7 +32,7 @@ function init()
         log("Debugging enabled.", "info", script_name)
     end
 
-    -- Allow 5 attempts at discovering the RefinedStorage network
+    -- Allow 5 attempts at discovering the BiggerReactr or ExtremeReactor interface
     local loopI = 0
     while loopI ~= 5 do
 
@@ -66,14 +66,14 @@ end
 function main()
     while true do
         
-        local is_active = reactor.active()
-        local energy_stored = reactor.battery().stored()
-        local energy_capacity = reactor.battery().capacity()
-        local energy_percentage = math.floor((energy_stored / energy_capacity) * 100)
+        reactor.is_active = reactor.active()
+        reactor.energy_stored = reactor.battery().stored()
+        reactor.energy_capacity = reactor.battery().capacity()
+        reactor.energy_percentage = math.floor((reactor.energy_stored / reactor.energy_capacity) * 100)
 
-        local fuel_stored = reactor.fuelTank().fuel()
-        local fuel_capacity = reactor.fuelTank().capacity()
-        local fuel_percentage = math.floor((fuel_stored / fuel_capacity) * 100)
+        reactor.fuel_stored = reactor.fuelTank().fuel()
+        reactor.fuel_capacity = reactor.fuelTank().capacity()
+        reactor.fuel_percentage = math.floor((reactor.fuel_stored / reactor.fuel_capacity) * 100)
 
         -- Reactor Monitor
         -- local monitor_text = "Reactor: " .. (is_active and "Active" or "Inactive") .. "\n"
@@ -81,30 +81,54 @@ function main()
         -- monitor_text = monitor_text .. "Energy Capacity: " .. energy_capacity .. " RF\n"
         -- monitor_text = monitor_text .. "Energy Percentage: " .. energy_percentage .. "%\n"
 
-        if fuel_stored == 0 then
+        if reactor.fuel_stored == 0 then
             log("No fuel detected. Waiting 60s for fuel", "warning", script_name)
             sleep(60)
         else
             -- If energy percentage is below the config value, activate the reactor
-            if energy_percentage < config.energy_toggle_percent then
+            if reactor.energy_percentage < config.energy_toggle_percent then
                 log("Reactor battery below threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
-                if not is_active then
+                if not reactor.is_active then
                     log("Reactor is inactive, activating.", "info", script_name)
                     reactor.setActive(true)
                 end
             -- Else if energy percentage is above the config value, deactivate the reactor
             else
                 log("Reactor battery above threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
-                if is_active then
+                if reactor.is_active then
                     log("Reactor is active, deactivating.", "info", script_name)
                     reactor.setActive(false)
                 end
+            end
+
+            -- Update monitor with updated information
+            if monitors[1] ~= nil then
+                update_monitor()
             end
 
             log("Sleeping for 5s", "debug", script_name)
             sleep(5)
         end
     end
+end
+
+function update_monitor()
+    monitor.clear()
+    monitor.setTextScale(0.5)
+    monitor.setCursorPos(1, 1)
+    monitor.write("Reactor: " .. (reactor.is_active and "Active" or "Inactive"))
+    monitor.setCursorPos(1, 2)
+    monitor.write("Energy Stored: " .. reactor.energy_stored .. " RF")
+    monitor.setCursorPos(1, 3)
+    monitor.write("Energy Capacity: " .. reactor.energy_capacity .. " RF")
+    monitor.setCursorPos(1, 4)
+    monitor.write("Energy Percentage: " .. reactor.energy_percentage .. "%")
+    monitor.setCursorPos(1, 5)
+    monitor.write("Fuel Stored: " .. reactor.fuel_stored .. " mB")
+    monitor.setCursorPos(1, 6)
+    monitor.write("Fuel Capacity: " .. reactor.fuel_capacity .. " mB")
+    monitor.setCursorPos(1, 7)
+    monitor.write("Fuel Percentage: " .. reactor.fuel_percentage .. "%")
 end
 
 
