@@ -19,8 +19,6 @@ local description = "Manages BiggerReactor/ExtremeReactor's energy efficiency."
 local config = {}
 config.energy_toggle_percent = 80
 
-utils.set_debugging(debugging) -- Sets debugging to true/false for logging
-
 -- Script Variables
 local reactor = {}
 
@@ -28,6 +26,11 @@ local reactor = {}
 -- Functions
 function init()
     monitors = { peripheral.find("monitor") }
+
+    if debugging then
+        utils.set_debugging(debugging) -- Sets debugging to true/false for logging
+        log("Debugging enabled.", "info", script_name)
+    end
 
     -- Allow 5 attempts at discovering the RefinedStorage network
     local loopI = 0
