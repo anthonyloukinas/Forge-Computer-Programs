@@ -94,7 +94,7 @@ function main()
                     log("Reactor is active, deactivating.", "info", script_name)
                     reactor.setActive(false)
                 end
-                log("Reactor battery above threshold of " .. config.energy_toggle_percent .. "%.", "debug", script_name)
+                log("Reactor battery above threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
             end
 
             log("Sleeping for 5s", "debug", script_name)
