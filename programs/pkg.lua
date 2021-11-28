@@ -58,7 +58,7 @@ function list()
     local packages = http.get("https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/package-list.json").readAll()
     local data = json.decode(packages)
     for i = 1, #data.packages do
-        print(data.packages[i].name)
+        print(data.packages[i].name .. "@" .. data.packages[i].version .. " - " .. data.packages[i].description)
     end
 
 end
