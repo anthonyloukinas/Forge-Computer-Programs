@@ -27,6 +27,9 @@ end
 -- Functions
 function init()
 
+    -- Ensure JSON is available
+    os.loadAPI("json")
+
     if debugging then
         utils.set_debugging(debugging) -- Sets debugging to true/false for logging
         log("Debugging enabled.", "info", script_name)
@@ -51,11 +54,13 @@ function main()
 end
 
 function list() 
+    
     local packages = http.get("https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/package-list.json").readAll()
-    local json = textutils.unserialize(packages)
-    for i = 1, #json do
-        print(json[i].name)
+    local data = json.decode(packages)
+    for i = 1, #data do
+        print(data[i].name)
     end
+
 end
 
 function install(pkg) end
