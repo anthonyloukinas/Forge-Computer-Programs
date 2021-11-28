@@ -15,6 +15,7 @@ files = {
     [5] = "lib/utils.lua",
     [6] = "scripts/reactor/manager.lua",
     [7] = "configure.lua",
+    [8] = "programs/pkg.lua",
 }
 
 
