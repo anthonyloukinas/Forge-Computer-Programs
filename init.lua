@@ -33,7 +33,7 @@ for i = 1, #files do
     end
 
     log("Installing new script " .. files[i], "info", "system")
-    download(base_github_url .. files[i], files[i])
+    utils.download(base_github_url .. files[i], files[i])
 end
 
 log("System initialized", "info", "system")
