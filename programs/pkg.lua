@@ -67,7 +67,7 @@ function list()
     
     if package_data ~= nil and #package_data.packages > 0 then
         for i = 1, #package_data.packages do
-            print(data.packages[i].name .. "@" .. data.packages[i].version .. " - " .. data.packages[i].description)
+            print(package_data.packages[i].name .. "@" .. package_data.packages[i].version .. " - " .. package_data.packages[i].description)
         end
     else
         log("No packages found.", "error", script_name)
