@@ -53,6 +53,7 @@ end
 function list() 
     
     local packages = http.get("https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/package-list.json").readAll()
+    print(packages)
     local data = textutils.unserialize(packages)
     for i = 1, #data do
         print(data[i].name)
