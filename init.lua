@@ -3,6 +3,8 @@
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
 -- @purpose: Initializes ComputerCraft instance with all required files
 
+-- Imports
+local utils = require("lib/utils")
 
 -- Variables
 local base_github_url = "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/"
@@ -19,31 +21,19 @@ files = {
 }
 
 
--- Functions
-function download(url, file)
-    local content = http.get(url).readAll()
-    if not content then
-      error("[system] Could not connect to GitHub")
-    end
-    f = fs.open(file, "w")
-    f.write(content)
-    f.close()
-end
-
-
 -- Main
-print("[system] Initializing system")
+log("Initializing system", "info", "system")
 
 for i = 1, #files do
     local file_found = fs.exists(files[i])
 
     if file_found then
-        print("[system] Deleting old script " .. files[i])
+        log("Deleting old script ".. files[i], "info", "system")
         fs.delete(files[i])
     end
 
-    print("[system] Installing new script " .. files[i])
+    log("Installing new script " .. files[i], "info", "system")
     download(base_github_url .. files[i], files[i])
 end
 
-print("[system] System initialized")
+log("System initialized", "info", "system")

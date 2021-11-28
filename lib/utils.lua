@@ -30,4 +30,14 @@ function log(message, level, script)
     end
 end
 
-return { log = log, set_debugging = set_debugging }
+function download(url, file)
+    local content = http.get(url).readAll()
+    if not content then
+      error("[system] Could not connect to GitHub")
+    end
+    f = fs.open(file, "w")
+    f.write(content)
+    f.close()
+end
+
+return { log = log, set_debugging = set_debugging, download = download }

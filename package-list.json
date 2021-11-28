@@ -5,7 +5,8 @@
       "version": "1.0.0",
       "path": "configure.lua",
       "author": "Anthony Loukinas",
-      "description": "Configuring client computer to use with server"
+      "description": "Configuring client computer to use with server",
+      "install_path": "configure.lua"
     }
   ]
 }
