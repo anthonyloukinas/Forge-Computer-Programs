@@ -10,11 +10,11 @@ local utils = require("lib/utils")
 local base_github_url = "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/"
 
 files = {
-    [1] = "scripts/mon_storage.lua",
-    [2] = "scripts/find_item.lua",
-    [3] = "scripts/craft_essences.lua",
-    [4] = "scripts/turtle/stair_shaft.lua",
-    [5] = "lib/utils.lua",
+    [1] = "lib/utils.lua",
+    [2] = "scripts/mon_storage.lua",
+    [3] = "scripts/find_item.lua",
+    [4] = "scripts/craft_essences.lua",
+    [5] = "scripts/turtle/stair_shaft.lua",
     [6] = "scripts/reactor/manager.lua",
     [7] = "configure.lua",
     [8] = "programs/pkg.lua",
