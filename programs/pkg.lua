@@ -18,7 +18,7 @@ local description = "Package manager for my scripts."
 -- Arguments
 local tArgs = { ... }
 
-if #tArgs ~= 2 then
+if #tArgs == 0 then
   local programName = arg[0] or fs.getName(shell.getRunningProgram())
   print("Usage: " .. programName .. " list/install/uninstall/autostart")
   return
@@ -32,7 +32,6 @@ function init()
         log("Debugging enabled.", "info", script_name)
     end
 
-    log(script_name .. " v" .. version .. " by " .. author .. " loaded.", "info", script_name)
 end
 
 function main()
@@ -51,7 +50,14 @@ function main()
 
 end
 
-function list() end
+function list() 
+    local packages = http.get("https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/package-list.json").readAll()
+    local json = textutils.unserialize(packages)
+    for i = 1, #json do
+        print(json[i].name)
+    end
+end
+
 function install(pkg) end
 function uninstall(pkg) end
 function autostart(pkg) end
