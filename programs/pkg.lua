@@ -63,11 +63,13 @@ function main()
 
 end
 
+-- TODO check if programs are already installed
 function list() 
     
     if package_data ~= nil and #package_data.packages > 0 then
+        print("Packages Available:\n")
         for i = 1, #package_data.packages do
-            print(package_data.packages[i].name .. "@" .. package_data.packages[i].version .. " - " .. package_data.packages[i].description)
+            print(" - " .. package_data.packages[i].name .. "@" .. package_data.packages[i].version .. " - " .. package_data.packages[i].description)
         end
     else
         log("No packages found.", "error", script_name)
@@ -83,9 +85,11 @@ function install(pkg)
     end
 
     local found = false
+    local found_pkg = nil
     for i = 1, #package_data.packages do
         if package_data.packages[i].name == pkg then
             found = true
+            found_pkg = package_data.packages[i]
             break
         end
     end
@@ -95,11 +99,11 @@ function install(pkg)
         return
     end
 
-    local url = base_github_url .. "/" .. pkg .. ".lua"
-    local file = fs.open(pkg .. ".lua", "w")
+    local url = base_github_url .. "/" .. found_pkg.path
+    local file = fs.open(found_pkg.path, "w")
     file.write(http.get(url).readAll())
     file.close()
-    log("Package " .. pkg .. " installed.", "info", script_name)
+    log("Package " .. found_pkg.name .. " installed.", "info", script_name)
 
 end
 

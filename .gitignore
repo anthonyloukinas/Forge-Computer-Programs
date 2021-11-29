@@ -44,3 +44,7 @@ server/package-lock.json
 
 deploy.yml
 inventory
+vault-pass
+vault.yml
+
+datapacks

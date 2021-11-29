@@ -1,0 +1,46 @@
+---
+- hosts: all
+  gather_facts: no
+
+  vars:
+    package_name: "cc-program-pack"
+    package_version: "1.0.1"
+    ansible_user: "aloukinas"
+    ansible_ssh_pass: "{{ aloukinas_password }}"
+    ansible_become_pass: "{{ aloukinas_password }}"
+
+  tasks:
+    - name: Compress zip the package
+      shell: |
+        zip -r /tmp/{{ package_name }}-{{ package_version }}.zip data/ pack.mcmeta pack.png
+      delegate_to: localhost
+
+    - name: Ensure unzip is installed
+      apt:
+        name: unzip
+        state: latest
+      become: yes
+
+    - name: Clear existing cc-program-pack
+      file:
+        state: absent
+        path: /home/aloukinas/FTB_ATM6/world/datapacks/cc-program-pack
+      become: yes
+
+    - name: Ensure cc-program-pack directory exists
+      file:
+        state: directory
+        path: /home/aloukinas/FTB_ATM6/world/datapacks/cc-program-pack
+        mode: 0755
+        owner: aloukinas
+        group: aloukinas
+      become: yes
+
+    - name: Uncompress zip on remote
+      unarchive:
+        src: /tmp/{{ package_name }}-{{ package_version }}.zip
+        dest: /home/aloukinas/FTB_ATM6/world/datapacks/cc-program-pack/
+        mode: 0755
+        owner: aloukinas
+        group: aloukinas
+      become: yes
