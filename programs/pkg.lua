@@ -6,7 +6,7 @@
 debugging = false
 
 -- Imports
-local utils = require("../lib/utils")
+local utils = require("lib/utils")
 
 -- Variables
 local script_name = "pkg"
