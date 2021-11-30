@@ -3,16 +3,25 @@
     {
       "name": "configure",
       "version": "1.0.0",
-      "path": "configure.lua",
+      "path": "programs/configure.lua",
       "repo": "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/",
       "author": "Anthony Loukinas",
       "description": "Configuring client computer to use with server",
       "install_path": "configure.lua"
     },
     {
+      "name": "wipe",
+      "version": "1.0.0",
+      "path": "programs/wipe.lua",
+      "repo": "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/",
+      "author": "Anthony Loukinas",
+      "description": "Wipe the current computer",
+      "install_path": "wipe.lua"
+    },
+    {
       "name": "test",
       "version": "1.0.0",
-      "path": "test.lua",
+      "path": "programs/test.lua",
       "repo": "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/",
       "author": "Anthony Loukinas",
       "description": "Test script",
