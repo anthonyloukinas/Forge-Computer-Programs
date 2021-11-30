@@ -16,7 +16,7 @@ files = {
     [4] = "scripts/craft_essences.lua",
     [5] = "scripts/turtle/stair_shaft.lua",
     [6] = "scripts/reactor/manager.lua",
-    [7] = "configure.lua",
+    [7] = "programs/configure.lua",
     [8] = "programs/pkg.lua",
 }
 
