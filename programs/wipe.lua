@@ -15,6 +15,15 @@ local author = "Anthony Loukinas"
 local description = "Wipe the current computer."
 local base_github_url = "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/"
 
+-- Script Variables
+local config = {}
+config.files_to_ignore = {
+    "rom",
+    "logs",
+    "update.lua",
+    "wipe.lua",
+}
+
 -- Arguments
 local tArgs = { ... }
 
@@ -25,6 +34,15 @@ if #tArgs == 0 then
 end
 
 -- Functions
+function table.contains(table, element)
+    for _, value in pairs(table) do
+      if value == element then
+        return true
+      end
+    end
+    return false
+end
+
 function init()
 
     utils.set_name(script_name)
@@ -43,8 +61,9 @@ function main()
         files = fs.list("/")
 
         for i = 1, #files do
-            if files[i] ~= "wipe.lua" and files[i] ~= "rom" and files[i] ~= "logs" then
-                fs.delete(files[i])
+            if table.contains(config.files_to_ignore, files[i]) == false then
+                log("Deleting file " .. files[i], "debug")
+                fs.delete("/" .. files[i])
             end
         end
 

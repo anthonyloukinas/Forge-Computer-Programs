@@ -54,5 +54,6 @@ end
 return { 
     log = log,
     set_debugging = set_debugging,
+    set_name = set_name,
     download = download 
 }
