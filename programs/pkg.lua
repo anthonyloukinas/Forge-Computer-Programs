@@ -30,8 +30,16 @@ end
 -- Functions
 function init()
 
-    -- Ensure JSON is available 
-    os.loadAPI("json")
+    -- Ensure JSON is available
+    if not fs.exists("/rom/apis/json.lua") then
+        if not pcall(require, "json") then
+            print("JSON library not found. Please install it.")
+            return
+        else
+            os.loadAPI("json")
+        end
+        return
+    end
 
     if debugging then
         utils.set_debugging(debugging) -- Sets debugging to true/false for logging
