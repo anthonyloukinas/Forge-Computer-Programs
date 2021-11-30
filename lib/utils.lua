@@ -4,7 +4,7 @@
 -- @purpose: A collection of utility functions.
 
 local debugging = false
-local script_name = nil
+local script_name = "System"
 
 function set_debugging(debug)
     debugging = debug
@@ -41,13 +41,18 @@ function log(message, level, script)
 end
 
 function download(url, file)
-    local content = http.get(url).readAll()
-    if not content then
+    local content = http.get(url)
+    if content == nil then
       error("[system] Could not connect to GitHub")
     end
     f = fs.open(file, "w")
-    f.write(content)
+    f.write(content.readAll())
     f.close()
 end
 
-return { log = log, set_debugging = set_debugging, download = download }
+-- Export the functions
+return { 
+    log = log,
+    set_debugging = set_debugging,
+    download = download 
+}
