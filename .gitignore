@@ -39,9 +39,6 @@ luac.out
 *.x86_64
 *.hex
 
-server/node_modules
-server/package-lock.json
-
 deploy.yml
 inventory
 vault-pass
