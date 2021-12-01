@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    base_dir: "../.."
+    rom_dir: "/mnt/c/Program\ Files/CraftOS-PC/rom"
+    cpu_dir: "/mnt/c/Users/Anthony\ Loukinas/AppData/Roaming/CraftOS-PC/computer/0"
+
+  tasks:
+    - name: Copy rom lib
+      copy:
+        src: "{{ base_dir }}/lib"
+        dest: "{{ rom_dir }}/modules/main/"
+
+    - name: Copy pkg program
+      copy:
+        src: "{{ base_dir }}/programs/pkg.lua"
+        dest: "{{ rom_dir }}/programs/pkg.lua"

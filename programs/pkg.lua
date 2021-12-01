@@ -107,6 +107,12 @@ function install(pkg)
         return
     end
 
+    -- Check if program is already installed
+    if fs.exists(found_pkg.path) then
+        log("Package already installed.", "error", script_name)
+        return
+    end
+
     local url = base_github_url .. "/" .. found_pkg.path
     local file = fs.open(found_pkg.path, "w")
     file.write(http.get(url).readAll())

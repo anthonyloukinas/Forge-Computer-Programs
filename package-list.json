@@ -17,15 +17,6 @@
       "author": "Anthony Loukinas",
       "description": "Wipe the current computer",
       "install_path": "wipe.lua"
-    },
-    {
-      "name": "test",
-      "version": "1.0.0",
-      "path": "programs/test.lua",
-      "repo": "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/",
-      "author": "Anthony Loukinas",
-      "description": "Test script",
-      "install_path": "test.lua"
     }
   ]
 }
