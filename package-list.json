@@ -17,6 +17,15 @@
       "author": "Anthony Loukinas",
       "description": "Wipe the current computer",
       "install_path": "wipe.lua"
+    },
+    {
+      "name": "update",
+      "version": "1.0.0",
+      "path": "update.lua",
+      "repo": "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/",
+      "author": "Anthony Loukinas",
+      "description": "Updates core system components with the latest changes",
+      "install_path": "update.lua"
     }
   ]
 }

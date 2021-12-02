@@ -3,16 +3,41 @@
   gather_facts: no
 
   vars:
+    build_dir: "/mnt/c/Users/Anthony Loukinas/Documents/Projects/Forge-Computer-Programs"
     package_name: "cc-program-pack"
-    package_version: "1.0.1"
+    package_version: "1.0.2"
     ansible_user: "aloukinas"
     ansible_ssh_pass: "{{ aloukinas_password }}"
     ansible_become_pass: "{{ aloukinas_password }}"
 
   tasks:
+
+    - name: Copy latest copy of programs
+      block:
+      - name: Copy current 'pkg.lua' version to datapack
+        copy:
+          src: "{{ build_dir }}/programs/pkg.lua"
+          dest: "{{ build_dir }}/datapacks/pack/data/computercraft/lua/rom/programs/"
+
+      - name: Copy current 'json.lua' version to datapack
+        copy:
+          src: "{{ build_dir }}/lib/json.lua"
+          dest: "{{ build_dir }}/datapacks/pack/data/computercraft/lua/rom/apis/"
+
+      - name: Copy current 'utils.lua' version to datapack
+        copy:
+          src: "{{ build_dir }}/lib/utils.lua"
+          dest: "{{ build_dir }}/datapacks/pack/data/computercraft/lua/rom/modules/main/lib/"
+      delegate_to: localhost
+      
     - name: Compress zip the package
-      shell: |
-        zip -r /tmp/{{ package_name }}-{{ package_version }}.zip data/ pack.mcmeta pack.png
+      community.general.archive:
+        path:
+          - "{{ build_dir }}/datapacks/pack/data"
+          - "{{ build_dir }}/datapacks/pack/pack.png"
+          - "{{ build_dir }}/datapacks/pack/pack.mcmeta"
+        dest: /tmp/{{ package_name }}-{{ package_version }}.zip
+        format: zip
       delegate_to: localhost
 
     - name: Ensure unzip is installed

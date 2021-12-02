@@ -1,38 +1,73 @@
 -- update.lua
 --
 -- @author: Anthony Loukinas <anthony.loukinas@gmail.com>
--- @purpose: Updates the init.lua file with the latest changes.
+-- @purpose: Updates core system components with the latest changes.
+
+debugging = false
+
+-- Imports
+local utils = require("lib/utils")
 
 
 -- Variables
+local script_name = "update"
+local version = "1.0"
+local author = "Anthony Loukinas"
+local description = "Updates core system components with the latest changes"
+
 local url = "https://raw.githubusercontent.com/anthonyloukinas/Forge-Computer-Programs/main/init.lua"
+local mbs_url = "https://raw.githubusercontent.com/SquidDev-CC/mbs/master/mbs.lua"
+
+
+-- Arguments
+local tArgs = {...}
+if #tArgs == 0 then
+    print("Usage: " .. script_name .. " init/mbs")
+    return
+end
 
 
 -- Functions
-function download(url, file)
-    local content = http.get(url).readAll()
+function init()
+    -- Set script name
+    utils.set_name(script_name)
 
-    if not content then
-        error("Could not connect to website")
+    if debugging then
+        utils.set_debugging(debugging) -- Sets debugging to true/false for logging
+        log("Debugging enabled.", "info")
+    end
+end
+
+function main()
+    if tArgs[1] == "init" then
+        log("Updating init.lua...", "info")
+
+        log("Removing old init.lua.", "debug")
+        fs.delete("init.lua")
+
+        log("Downloading new init.lua.", "debug")
+        download(url, "init.lua")
+
+        shell.run("./init.lua")
+    elseif tArgs[1] == "mbs" then
+        log("Updating mbs.lua...", "info")
+
+        log("Removing old init.lua.", "debug")
+        fs.delete("mbs.lua")
+
+        log("Downloading new init.lua.", "debug")
+        download(mbs_url, "mbs.lua")
+
+        shell.run("./mbs.lua install")
+    else
+        log("Invalid argument.", "error")
+        return
     end
 
-    f = fs.open(file, "w")
-    f.write(content)
-    f.close()
+    log("System initialized.", "info")
 end
 
 
 -- Main
-print("[updater] Performing system upgrade")
-
--- Removing old init.lua
-print("[updater] Removing old init.lua")
-fs.delete("init.lua")
-
--- Download latest init.lua
-print("[updater] Downloading latest init.lua")
-download(url, "init.lua")
-
--- Execute init.lua
-shell.run("./init.lua")
-print("[updater] System upgrade complete")
+init()
+main()
