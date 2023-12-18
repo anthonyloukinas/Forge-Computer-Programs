@@ -18,6 +18,8 @@ files = {
     [6] = "scripts/reactor/manager.lua",
     [7] = "programs/configure.lua",
     [8] = "programs/pkg.lua",
+    [9] = "scripts/turtle/cubemine.lua",
+    [10] = "scripts/turtle/tunnel.lua",
 }
 
 
