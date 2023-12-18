@@ -8,7 +8,7 @@ if not turtle then
 end
 
 local tArgs = { ... }
-if #tArgs ~= 1 then
+if #tArgs ~= 3 then
   local programName = arg[0] or fs.getName(shell.getRunningProgram())
   print("Usage: " .. programName .. " <height> <width> <length>")
   return
