@@ -20,6 +20,7 @@ files = {
     [8] = "programs/pkg.lua",
     [9] = "scripts/turtle/cubemine.lua",
     [10] = "scripts/turtle/tunnel.lua",
+    [11] = "scripts/reactor/manager120.lua",
 }
 
 
