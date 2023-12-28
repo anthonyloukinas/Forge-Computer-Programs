@@ -66,45 +66,52 @@ end
 
 function main()
     while true do
-        
-        reactor.is_active = reactor.getActive()
-
-        reactor.energy_stored = reactor.getEnergyStored()
-        reactor.energy_capacity = reactor.getEnergyCapacity()
-        reactor.energy_percentage = math.floor((reactor.energy_stored / reactor.energy_capacity) * 100)
-
-        reactor.fuel_stored = reactor.getFuelAmount()
-        reactor.fuel_capacity = reactor.getFuelAmountMax()
-        reactor.fuel_percentage = math.floor((reactor.fuel_stored / reactor.fuel_capacity) * 100)
-
-        if reactor.fuel_stored == 0 then
-            log("No fuel detected. Waiting 60s for fuel", "warning", script_name)
-            sleep(60)
+        if pcall(loop) then
+            log("Loop completed successfully", "debug", script_name)
         else
-            -- If energy percentage is below the config value, activate the reactor
-            if reactor.energy_percentage < config.energy_toggle_percent then
-                log("Reactor battery below threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
-                if not reactor.is_active then
-                    log("Reactor is inactive, activating.", "info", script_name)
-                    reactor.setActive(true)
-                end
-            -- Else if energy percentage is above the config value, deactivate the reactor
-            else
-                log("Reactor battery above threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
-                if reactor.is_active then
-                    log("Reactor is active, deactivating.", "info", script_name)
-                    reactor.setActive(false)
-                end
-            end
-
-            -- Update monitor with updated information
-            if monitors[1] ~= nil then
-                update_monitor()
-            end
-
-            log("Sleeping for 5s", "debug", script_name)
-            sleep(5)
+            log("Loop failed", "error", script_name)
         end
+    end
+end
+
+function loop()
+    reactor.is_active = reactor.getActive()
+
+    reactor.energy_stored = reactor.getEnergyStored()
+    reactor.energy_capacity = reactor.getEnergyCapacity()
+    reactor.energy_percentage = math.floor((reactor.energy_stored / reactor.energy_capacity) * 100)
+
+    reactor.fuel_stored = reactor.getFuelAmount()
+    reactor.fuel_capacity = reactor.getFuelAmountMax()
+    reactor.fuel_percentage = math.floor((reactor.fuel_stored / reactor.fuel_capacity) * 100)
+
+    if reactor.fuel_stored == 0 then
+        log("No fuel detected. Waiting 60s for fuel", "warning", script_name)
+        sleep(60)
+    else
+        -- If energy percentage is below the config value, activate the reactor
+        if reactor.energy_percentage < config.energy_toggle_percent then
+            log("Reactor battery below threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
+            if not reactor.is_active then
+                log("Reactor is inactive, activating.", "info", script_name)
+                reactor.setActive(true)
+            end
+        -- Else if energy percentage is above the config value, deactivate the reactor
+        else
+            log("Reactor battery above threshold of " .. config.energy_toggle_percent .. "%", "debug", script_name)
+            if reactor.is_active then
+                log("Reactor is active, deactivating.", "info", script_name)
+                reactor.setActive(false)
+            end
+        end
+
+        -- Update monitor with updated information
+        if monitors[1] ~= nil then
+            update_monitor()
+        end
+
+        log("Sleeping for 5s", "debug", script_name)
+        sleep(5)
     end
 end
 
