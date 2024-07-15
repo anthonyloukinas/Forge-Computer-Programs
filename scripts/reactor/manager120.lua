@@ -6,8 +6,32 @@
 debugging = false
 
 -- Imports
-local utils = require("../../lib/utils")
+-- local utils = require("../../lib/utils")
 
+function log(message, level, script)
+    if script ~= nil then
+        script_name = script
+    end
+    
+    if level == nil then
+        level = "info"
+        print("[" .. script_name .. "] [info] " .. message)
+    elseif level == "info" then
+        print("[" .. script_name .. "] [info] " .. message)
+    elseif level == "warn" then
+        print("[" .. script_name .. "] [warn] " .. message)
+    elseif level == "error" then
+        print("[" .. script_name .. "] [error] " .. message)
+    elseif level == "fatal" then
+        print("[" .. script_name .. "] [fatal] " .. message)
+    elseif level == "debug" then
+        if debugging ~= nil then
+            if debugging then
+                print("[" .. script_name .. "] [debug] " .. message)
+            end
+        end
+    end
+end
 
 -- Variables
 local script_name = "manager"
@@ -29,7 +53,7 @@ function init()
     monitors = { peripheral.find("monitor") }
 
     if debugging then
-        utils.set_debugging(debugging) -- Sets debugging to true/false for logging
+        -- utils.set_debugging(debugging) -- Sets debugging to true/false for logging
         log("Debugging enabled.", "info", script_name)
     end
 
